@@ -3,6 +3,7 @@ import Selection from "../components/Selection";
 import Main from "../Layout/Main";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PrivetRoutes from "./PrivetRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -10,11 +11,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Selection />,
+        element: (
+          <PrivetRoutes>
+            <Selection />
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/home",
-        element: <Selection />,
+        element: (
+          <PrivetRoutes>
+            <Selection />
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/login",

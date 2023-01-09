@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../context/AuthProvider";
+import UserSelection from "./UserSelection";
 
 const Selection = () => {
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetch("http://localhost:5000/options")
@@ -18,7 +22,29 @@ const Selection = () => {
     const sector = selectedOption;
     const term = "Agree to terms";
     console.log(name, sector, term);
+    const userSelection = {
+      name,
+      sector,
+      term,
+      email: user?.email,
+    };
+    fetch("http://localhost:5000/selection", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userSelection),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Saved successfully");
+          form.reset();
+        }
+      })
+      .catch((error) => toast.error(error));
   };
+
   return (
     <div className="flex items-center justify-center text-center bg-gray-900 text-gray-100 h-screen">
       <form
@@ -79,6 +105,7 @@ const Selection = () => {
           Save
         </button>
       </form>
+      <UserSelection></UserSelection>
     </div>
   );
 };

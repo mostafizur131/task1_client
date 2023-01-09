@@ -23,7 +23,7 @@ const Header = () => {
             aria-label="Back to homepage"
             className="flex items-center p-2"
           >
-            <p className="uppercase text-xl">architect</p>
+            <p className="uppercase text-xl">Task</p>
           </Link>
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
@@ -32,14 +32,6 @@ const Header = () => {
                 className="flex items-center px-4 -mb-1 hover:text-yellow-400"
               >
                 Home
-              </Link>
-            </li>
-            <li className="flex">
-              <Link
-                to="/services"
-                className="flex items-center px-4 -mb-1 hover:text-yellow-400"
-              >
-                Services
               </Link>
             </li>
           </ul>
