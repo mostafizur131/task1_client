@@ -6,7 +6,7 @@ const UserSelection = () => {
   const [userSelect, setUserSelect] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/selection?email=${user?.email}`)
+    fetch(`https://task1-server-chi.vercel.app/selection?email=${user?.email}`)
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut();

@@ -9,7 +9,7 @@ const Selection = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/options")
+    fetch("https://task1-server-chi.vercel.app/options")
       .then((res) => res.json())
       .then((data) => setOptions(data));
   }, []);
@@ -28,7 +28,7 @@ const Selection = () => {
       term,
       email: user?.email,
     };
-    fetch("http://localhost:5000/selection", {
+    fetch("https://task1-server-chi.vercel.app/selection", {
       method: "POST",
       headers: {
         "content-type": "application/json",
